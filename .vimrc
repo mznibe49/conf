@@ -1,58 +1,30 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
-" the call to :runtime you can find below.  If you wish to change any of those
-" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
-" will be overwritten everytime an upgrade of the vim packages is performed.
-" It is recommended to make changes after sourcing debian.vim since it alters
-" the value of the 'compatible' option.
+set nocompatible                " pas compatibilité avec vi
 
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+" priorité faible pour les fichiers avec les extensions
+" suivantes lors du complètement
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set history=50                  " 50 lignes dans l'historique
+set ruler                       " affiche la position du curseur en bas
+set sm                          " affiche la parenthèse correspondante
 
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+set formatoptions=tcroqn        " indentation
+set autoindent
+set cin
+set textwidth=0                 " pas de coupure de ligne par défaut
+set backspace=2
+set ts=4                        " tabulation sur 4 caractères
+set sw=4
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-if has("syntax")
-  syntax on
-endif
+set nobackup                    " pas de fichier backup
+set dir=~/tmp                   " fichier temporaire dans ~/tmp (il faut qu'il existe !)
+set autowrite
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
+set hlsearch                    " surligne les recherches
+set incsearch                   " recherche au fur et à mesure
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
-set number
-set syntax=0N
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smartindent
+syntax on                       " coloration syntaxique
+set background=dark             " fond noir par défaut
+set nu                          " afficher numero des lignes
+set mouse=a		                " Enable mouse usage (all modes)
+set nocp						" no compatible mode
+set smartindent					" visualise mode + = or == for one line or ggvG + = pour tout le fichier
